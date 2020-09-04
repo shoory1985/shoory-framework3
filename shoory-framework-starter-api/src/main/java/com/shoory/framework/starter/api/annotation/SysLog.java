@@ -9,5 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Authorized {
+public @interface SysLog {
+	String level() default "";
+	String action() default "";
+	String description() default "";
 }
