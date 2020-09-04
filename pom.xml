@@ -16,7 +16,7 @@
 		<module>shoory-framework-starter-api</module>
 		<module>shoory-framework-starter-service</module>
 		<module>shoory-framework-starter-utils</module>
-		<module>shoory-framework-starter-jwt</module>
+		<module>shoory-framework-starter-auth-jwt</module>
 	</modules>
 
 	<properties>

@@ -3,31 +3,23 @@ package com.shoory.framework.starter.jwt;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
 import org.apache.commons.lang.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.reflect.FieldSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.shoory.framework.starter.api.BizException;
-import com.shoory.framework.starter.api.annotation.Authorized;
+import com.shoory.framework.starter.api.annotation.RequirePermission;
 import com.shoory.framework.starter.api.request.AuthorizedRequest;
 import com.shoory.framework.starter.api.response.AuthorizedResponse;
-import com.shoory.framework.starter.api.response.BaseResponse;
 
 @Aspect
 @Component
@@ -43,8 +35,8 @@ public class JwtAspect {
 	 * @return 返回被切入的方法的返回值
 	 * @throws Throwable
 	 */
-	@Around("@annotation(authorized)")
-	public Object doAround(ProceedingJoinPoint joinPoint, Authorized authorized) throws Throwable {
+	@Around("@annotation(requirePermission)")
+	public Object doAround(ProceedingJoinPoint joinPoint, RequirePermission requirePermission) throws Throwable {
 		// 校验JWT
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		String token = attributes.getRequest().getHeader("Authorization");
