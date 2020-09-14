@@ -21,7 +21,7 @@ public class BaseRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
 
 	@Override
 	public <S extends T> S save(S entity) {
-		if (entity instanceof Insertable) {
+		if (entity instanceof Insertable && ((Insertable) entity).getCreatedTime() == 0) {
 			((Insertable) entity).setCreatedTime(System.currentTimeMillis());
 		}
 		if (entity instanceof Updatable) {
