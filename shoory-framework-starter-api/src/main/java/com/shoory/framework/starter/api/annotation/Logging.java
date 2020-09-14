@@ -6,11 +6,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.boot.logging.LogLevel;
+
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Logging {
-	String level() default "";
+	LogLevel level() default LogLevel.TRACE;
 	String action() default "";
 	String description() default "";
 }

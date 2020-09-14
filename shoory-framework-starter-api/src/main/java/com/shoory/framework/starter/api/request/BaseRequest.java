@@ -1,12 +1,14 @@
 package com.shoory.framework.starter.api.request;
 
+import java.util.HashMap;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import springfox.documentation.annotations.ApiIgnore;
 
 @ApiModel
 @Data
@@ -17,5 +19,9 @@ public class BaseRequest {
 	private String lang = "zh_CN";
 	
 	@ApiModelProperty(value = "地址", hidden = true)
-	private String _clientAddress;	
+	private String _clientAddress;
+
+	@JsonIgnore
+	@ApiModelProperty(hidden = true)
+	private HashMap<String, String> _extendInfo;	
 }

@@ -33,6 +33,19 @@ public class JwtUtils {
 		return new JwtUtils();
 	}
 	
+	public boolean checkAccessTokenIgnoreExpiration(String accessToken) {
+		try {
+			if (jwtVerifer == null) {
+				jwtVerifer = JWT.require(Algorithm.HMAC256(this.jwtSecret)).build();
+			}
+			jwtVerifer.verify(accessToken);
+			return true;
+		} catch (TokenExpiredException e) {
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 	public void checkAccessToken(String accessToken) {
 		try {
 			if (jwtVerifer == null) {
