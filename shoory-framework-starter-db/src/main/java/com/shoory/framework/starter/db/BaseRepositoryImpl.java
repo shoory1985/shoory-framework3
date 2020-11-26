@@ -4,6 +4,9 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaEntityInformationSupport;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
@@ -19,30 +22,21 @@ public class BaseRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
 		this(JpaEntityInformationSupport.getEntityInformation(domainClass, em), em);
 	}
 
+	@CachePut
 	@Override
 	public <S extends T> S save(S entity) {
-		if (entity instanceof Insertable && ((Insertable) entity).getCreatedTime() == 0) {
-			((Insertable) entity).setCreatedTime(System.currentTimeMillis());
-		}
-		if (entity instanceof Updatable) {
-			((Updatable) entity).setUpdatedTime(System.currentTimeMillis());
-		}
 		return super.save(entity);
 	}
 	
+	@CacheEvict
 	@Override
 	public void delete(T entity) {
-		if (entity instanceof Deletable) {
-			((Deletable) entity).setDeletedTime(System.currentTimeMillis());
-			super.save(entity);
-		} else {
-			super.delete(entity);
-		}
+		super.delete(entity);
 	}
 	
+	@Cacheable
 	@Override
 	public Optional<T> findById(ID id) {
-		return super.findById(id)
-				.filter(entity -> !(entity instanceof Deletable && ((Deletable) entity).getDeletedTime() > 0));
+		return super.findById(id);
 	}
 }
