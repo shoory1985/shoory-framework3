@@ -62,7 +62,7 @@ public class JwtUtils {
 		return refreshToken != null ? refreshToken.equals(this.refreshToken(accessToken, key)) : false;
 	}
 
-	public String accessToken(String issuer, String audience, long userId) {
+	public String accessToken(String issuer, String audience, String subject) {
 		// 通信令牌
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("alg", "HS256");
@@ -70,7 +70,7 @@ public class JwtUtils {
 		String ret = JWT.create().withHeader(map) // header
 				.withIssuer(issuer) // payload
 				.withAudience(audience)
-				.withSubject(String.valueOf(userId))
+				.withSubject(subject)
 				.withIssuedAt(new Date()) // sign time
 				.withExpiresAt(new Date(System.currentTimeMillis() + 1000L * jwtAccessTokenSeconds)) // expire time
 				.sign(Algorithm.HMAC256(this.jwtSecret));
