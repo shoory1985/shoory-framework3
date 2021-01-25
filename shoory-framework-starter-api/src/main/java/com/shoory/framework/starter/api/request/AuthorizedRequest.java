@@ -17,4 +17,7 @@ public class AuthorizedRequest extends BaseRequest {
 	//@NotBlank(message = BaseResponse.ERROR_INVALID_CREDENTIAL)
 	@ApiModelProperty(hidden = true)
 	private String _credential;
+	
+	@ApiModelProperty(hidden = true)
+	private String _roles;
 }
