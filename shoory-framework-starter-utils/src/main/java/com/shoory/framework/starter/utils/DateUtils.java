@@ -36,11 +36,12 @@ public class DateUtils {
 	}
 
 	public SimpleDateFormat getSimpleDateFormat(String pattern) {
-		SimpleDateFormat sdf = map.get(pattern);
-		if (sdf == null) {
-			map.put(pattern, sdf = new SimpleDateFormat(pattern));
-		}
-		return sdf;
+// 		SimpleDateFormat sdf = map.get(pattern);
+// 		if (sdf == null) {
+// 			map.put(pattern, sdf = new SimpleDateFormat(pattern));
+// 		}
+// 		return sdf;
+		return new SimpleDateFormat(pattern);
 	}
 
 	public Date parseDateTime(String str) {
