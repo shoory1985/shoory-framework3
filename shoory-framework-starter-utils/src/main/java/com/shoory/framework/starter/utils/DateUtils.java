@@ -36,11 +36,11 @@ public class DateUtils {
 	}
 
 	public SimpleDateFormat getSimpleDateFormat(String pattern) {
-		SimpleDateFormat sdf = map.get(pattern);
-		if (sdf == null) {
-			map.put(pattern, sdf = new SimpleDateFormat(pattern));
-		}
-		return sdf;
+//		SimpleDateFormat sdf = map.get(pattern);
+//		if (sdf == null) {
+//			map.put(pattern, sdf = new SimpleDateFormat(pattern));
+//		}
+		return new SimpleDateFormat(pattern);
 	}
 
 	public Date parseDateTime(String str) {
@@ -116,7 +116,7 @@ public class DateUtils {
 
 	/**
 	 * 获取月份的1号零点
-	 * @param adjustMonth ... -1（上月）、0（本月）、1（下月） ...
+	 * @param n ... -1（上月）、0（本月）、1（下月） ...
 	 * @return
 	 */
 	public Date getDiffDate(int n) {
