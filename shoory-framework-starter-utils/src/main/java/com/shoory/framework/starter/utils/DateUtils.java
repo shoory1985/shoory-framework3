@@ -192,7 +192,7 @@ public class DateUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd");
 		TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
 		Calendar cal = Calendar.getInstance();// 获取当前日期
-		long time = cal.getTimeInMillis()- days * 24 * 60 * 60 * 1000; //得到days天前的时间戳
+		long time = cal.getTimeInMillis()- days * 24L * 60 * 60 * 1000; //得到days天前的时间戳
 		cal.setTimeInMillis(time);
 		String  date = sdf.format(cal.getTime());  
 		return date;
