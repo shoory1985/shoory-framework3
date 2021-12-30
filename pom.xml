@@ -18,6 +18,8 @@
 		<module>shoory-framework-starter-service</module>
 		<module>shoory-framework-starter-utils</module>
 		<module>shoory-framework-starter-auth-jwt</module>
+		<module>shoory-framework-starter-oss</module>
+		<module>shoory-framework-starter-oss-minio</module>
 	</modules>
 
 	<properties>
