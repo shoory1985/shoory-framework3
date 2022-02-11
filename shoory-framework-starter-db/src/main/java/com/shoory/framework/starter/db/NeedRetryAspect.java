@@ -44,7 +44,7 @@ public class NeedRetryAspect {
 		do {
 			numAttempts++;
 			try {
-				// 再次执行业务代码
+				// 第numAttempts次执行业务代码
 				return pjp.proceed();
 			} catch (ObjectOptimisticLockingFailureException | StaleObjectStateException ex) {
 				if (numAttempts > annotation.retryTimes()) {
