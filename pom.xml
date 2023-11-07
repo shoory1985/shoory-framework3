@@ -20,6 +20,7 @@
 		<module>shoory-framework-starter-auth-jwt</module>
 		<module>shoory-framework-starter-oss</module>
 		<module>shoory-framework-starter-oss-minio</module>
+		<module>shoory-framework-starter-oss-fs</module>
 	</modules>
 
 	<properties>
