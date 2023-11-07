@@ -5,5 +5,5 @@ import java.io.IOException;
 
 @FunctionalInterface
 public interface DataFrameWriter {
-	public void write(DataOutputStream dos) throws IOException;
+	void write(DataOutputStream dos) throws IOException;
 }

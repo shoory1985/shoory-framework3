@@ -5,5 +5,5 @@ import java.io.IOException;
 
 @FunctionalInterface
 public interface DataFrameReader {
-	public void read(DataInputStream dis) throws IOException;
+	void read(DataInputStream dis) throws IOException;
 }

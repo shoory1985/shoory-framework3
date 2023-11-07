@@ -61,7 +61,7 @@ public class ServerTransactionFactory {
 			requestCount = 0;
 		}
 		requestCount ++;
-		result += "-" + String.valueOf(requestCount);
+		result += "-" + requestCount;
 		result += "-" + getShortHostAddress() + "-" + getProcessId();
 		
 		return result;

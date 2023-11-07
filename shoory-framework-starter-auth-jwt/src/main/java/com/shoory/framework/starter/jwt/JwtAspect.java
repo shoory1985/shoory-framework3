@@ -27,7 +27,7 @@ import com.shoory.framework.starter.api.response.AuthorizedResponse;
 @Order(Ordered.LOWEST_PRECEDENCE - 2)
 @Component
 public class JwtAspect {
-	private Logger logger = LoggerFactory.getLogger(JwtAspect.class);
+	private final Logger logger = LoggerFactory.getLogger(JwtAspect.class);
 	@Autowired
 	private JwtUtils jwtUtils;
 

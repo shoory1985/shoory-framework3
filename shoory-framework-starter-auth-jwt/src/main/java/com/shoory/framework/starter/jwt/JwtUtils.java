@@ -59,7 +59,7 @@ public class JwtUtils {
 		}
 	}
 	public boolean checkRefreshToken(String accessToken, String key, String refreshToken) {
-		return refreshToken != null ? refreshToken.equals(this.refreshToken(accessToken, key)) : false;
+		return refreshToken != null && refreshToken.equals(this.refreshToken(accessToken, key));
 	}
 
 	public String accessToken(String issuer, String audience, String subject) {

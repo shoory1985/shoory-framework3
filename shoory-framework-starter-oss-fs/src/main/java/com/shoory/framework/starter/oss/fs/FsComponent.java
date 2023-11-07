@@ -102,14 +102,4 @@ public class FsComponent implements OssComponent {
 		}
 		return false;
 	}
-
-	@Override
-	public List<String> list(String path) {
-		try {
-			File file = new File(basePath + path);
-			return Arrays.stream(file.list()).collect(Collectors.toList());
-		} catch (Throwable e) {
-		}
-		return new ArrayList<>();
-	}
 }

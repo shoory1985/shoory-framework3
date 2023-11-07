@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class I18nComponent {
-	private Hashtable<String, Properties> messages = new Hashtable<String, Properties>();
+	private final Hashtable<String, Properties> messages = new Hashtable<String, Properties>();
 
 	public I18nComponent() {
 		this.loadResources();
